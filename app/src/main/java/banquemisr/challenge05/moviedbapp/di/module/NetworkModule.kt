@@ -1,6 +1,7 @@
 package banquemisr.challenge05.moviedbapp.di.module
 
 
+import banquemisr.challenge05.data.remote.ApiServices
 import banquemisr.challenge05.moviedbapp.utils.Constants.API_BASE
 import banquemisr.challenge05.moviedbapp.utils.Constants.AUTH_TOKEN
 import dagger.Module
@@ -54,8 +55,8 @@ object NetworkModule {
             GsonConverterFactory.create())
         .build()
 
-//    @Provides
-//    @Singleton
-//    fun provideApiService(retrofit: Retrofit): ApiServices =
-//        retrofit.create(ApiServices::class.java)
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiServices =
+        retrofit.create(ApiServices::class.java)
 }

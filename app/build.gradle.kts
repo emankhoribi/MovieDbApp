@@ -61,6 +61,8 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    kapt (libs.androidx.hilt.compiler)
+
     implementation (libs.androidx.hilt.navigation.compose)
 
     // Retrofit
@@ -79,8 +81,10 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
-
+    //Coil
+    implementation (libs.coil.kt.coil.compose)
 
 
     testImplementation(libs.junit)

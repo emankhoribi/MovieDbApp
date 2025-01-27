@@ -16,7 +16,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import banquemisr.challenge05.moviedbapp.screen.movielist.MovieListScreen
 import banquemisr.challenge05.moviedbapp.ui.theme.MovieDbAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = "movie_list_screen"
                 ) {
+
                     composable("movie_list_screen"){
                         MovieListScreen(navController = navController)
                     }

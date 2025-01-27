@@ -15,14 +15,14 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideNowPlayingUseCase(moviesRepo: MoviesRepo): MoviesUseCase =
+    fun provideNowPlayingUseCase(moviesRepo: MoviesRepo): NowPlayingUseCase =
         NowPlayingUseCase(moviesRepo)
 
     @Provides
-    fun providePopularUseCase(moviesRepo: MoviesRepo): MoviesUseCase =
+    fun providePopularUseCase(moviesRepo: MoviesRepo): PopularUseCase =
         PopularUseCase(moviesRepo)
 
     @Provides
-    fun provideUpcomingUseCase(moviesRepo: MoviesRepo): MoviesUseCase =
+    fun provideUpcomingUseCase(moviesRepo: MoviesRepo): UpcomingUseCase =
         UpcomingUseCase(moviesRepo)
 }
