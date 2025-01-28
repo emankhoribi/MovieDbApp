@@ -7,9 +7,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import banquemisr.challenge05.domain.entity.MoviesResult
-import banquemisr.challenge05.domain.usecase.base.NowPlayingUseCase
-import banquemisr.challenge05.domain.usecase.base.PopularUseCase
-import banquemisr.challenge05.domain.usecase.base.UpcomingUseCase
+import banquemisr.challenge05.domain.usecase.NowPlayingUseCase
+import banquemisr.challenge05.domain.usecase.PopularUseCase
+import banquemisr.challenge05.domain.usecase.UpcomingUseCase
 import banquemisr.challenge05.moviedbapp.utils.MoviesPaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow

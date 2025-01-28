@@ -1,18 +1,23 @@
 package banquemisr.challenge05.moviedbapp.screen.movielist
 
+import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -27,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.LightGray
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -101,16 +107,33 @@ fun Movies(
 
     when (movieResult.loadState.refresh) {
         LoadState.Loading -> {
-
+            Box (
+                modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator(
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .align(Alignment.Center)
+                        .padding(
+                            top = 16.dp,
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = 16.dp
+                        )
+                )
+            }
         }
 
         is LoadState.Error -> {
-
+            Toast.makeText(LocalContext.current, (movieResult.loadState.refresh as LoadState.Error).error.message, Toast.LENGTH_SHORT).show()
         }
 
         else -> {
-            LazyRow(modifier,
-                verticalAlignment = Alignment.CenterVertically) {
+            LazyRow(
+                modifier,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 items(movieResult.itemCount) { index ->
                     movieResult[index]?.let { item ->
                         MovieItem(
@@ -119,7 +142,8 @@ fun Movies(
                                 .fillMaxHeight(0.5f)
                                 .fillMaxWidth(0.5f)
 
-                                .padding(horizontal = 15.dp)
+                                .padding(horizontal = 15.dp),
+                            navController = navController
                         )
                     }
 

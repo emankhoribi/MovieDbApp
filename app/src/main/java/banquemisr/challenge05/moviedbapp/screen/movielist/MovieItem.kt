@@ -1,5 +1,6 @@
 package banquemisr.challenge05.moviedbapp.screen.movielist
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import banquemisr.challenge05.domain.entity.MoviesResult
 import banquemisr.challenge05.moviedbapp.ui.theme.Typography
 import banquemisr.challenge05.moviedbapp.utils.Constants
@@ -26,12 +28,18 @@ import coil.compose.AsyncImage
 @Composable
 fun MovieItem(
    movieResult: MoviesResult,
-   modifier:Modifier = Modifier
+   modifier:Modifier = Modifier,
+   navController: NavController
 ){
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable {
+                navController.navigate(
+                    "movie_details_screen/${movieResult.id}"
+                )
+            },
 
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp

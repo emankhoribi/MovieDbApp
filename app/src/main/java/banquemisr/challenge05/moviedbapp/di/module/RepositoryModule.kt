@@ -1,7 +1,9 @@
 package banquemisr.challenge05.moviedbapp.di.module
 
 import banquemisr.challenge05.data.remote.ApiServices
+import banquemisr.challenge05.data.repository.MovieDetailsRepoImpl
 import banquemisr.challenge05.data.repository.MoviesRepoImpl
+import banquemisr.challenge05.domain.repo.MovieDetailsRepo
 import banquemisr.challenge05.domain.repo.MoviesRepo
 import dagger.Module
 import dagger.Provides
@@ -14,4 +16,7 @@ object RepositoryModule {
 
     @Provides
     fun provideMovieRepository(apiServices: ApiServices): MoviesRepo = MoviesRepoImpl(apiServices)
+
+    @Provides
+    fun provideMovieDetailRepository(apiServices: ApiServices): MovieDetailsRepo = MovieDetailsRepoImpl(apiServices)
 }
